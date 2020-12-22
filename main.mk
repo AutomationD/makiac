@@ -20,6 +20,7 @@ NPM_TOKEN ?= nil
 ICMK_TEMPLATE_TERRAFORM_BACKEND_CONFIG = $(INFRA_DIR)/icmk/terraform/templates/backend.tf.gotmpl
 ICMK_TEMPLATE_TERRAFORM_VARS = $(INFRA_DIR)/icmk/terraform/templates/terraform.tfvars.gotmpl
 ICMK_TEMPLATE_TERRAFORM_TFPLAN = $(INFRA_DIR)/icmk/terraform/templates/terraform.tfplan.gotmpl
+ICMK_TEMPLATE_TERRAFORM_LOCALSTACK_ENDPOINTS = $(INFRA_DIR)/icmk/aws/templates/localstack_endpoints.json.gotmpl
 
 # We are using a tag from AWS User which would tell us which environment this user is using. You can always override it.
 ENV ?= $(AWS_DEV_ENV_NAME)

@@ -22,6 +22,7 @@ CMD_LOCALSTACK_UP ?= @ ( $(DOCKER) run -d --name localstack -p $(LOCALSTACK_WEB_
 	-v /tmp/localstack:/tmp/localstack \
 	$(LOCALSTACK_IMAGE):$(LOCALSTACK_VERSION) > /dev/null) && \
 	sleep 10 && \
+	cat $(ICMK_TEMPLATE_TERRAFORM_LOCALSTACK_ENDPOINTS) | $(GOMPLATE) > $(ENV_DIR)/localstack_endpoints.json && \
 	echo "\033[32m[OK]\033[0m Localstack is UP. \nUse locally: aws --endpoint-url=http://localhost:4566 [options] <command>" || \
 	echo "\033[31m[ERROR]\033[0m Localstack start failed"
 
