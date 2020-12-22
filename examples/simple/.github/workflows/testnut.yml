@@ -1,0 +1,36 @@
+name: "[testnut] Apps Deploy"
+defaults:
+  run:
+    shell: bash
+
+env:
+  AWS_REGION: us-east-1
+  ENV: testnut
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  squirrel-impersonator:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_TESTNUT }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_TESTNUT }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Create AWS Profile
+        run: make aws.profile
+
+      - name: Build and Deploy
+        run: make ${{ github.job }}

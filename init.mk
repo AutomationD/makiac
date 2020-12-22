@@ -35,6 +35,7 @@ examples.simple: confirm $(INFRA_DIR)/icmk
 	@cp $(INFRA_DIR)/icmk/examples/simple/.envrc-example .envrc-example
 	@cp -R $(INFRA_DIR)/icmk/examples/simple/.infra/.gitignore $(INFRA_DIR)/
 	@cp -R $(INFRA_DIR)/icmk/examples/simple/.infra/env $(INFRA_DIR)/
+	@cp -R $(INFRA_DIR)/icmk/examples/simple/.github $(ROOT_DIR)/
 
 confirm:
 	@echo "\033[31mAre you sure? [y/N]\033[0m" && read ans && [ $${ans:-N} = y ] || (echo "\033[32mCancelled.\033[0m" && exit 1)
